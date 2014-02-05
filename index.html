@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="gw">
+<head>
+  <title>Genie-Workshop</title>
+  <link rel="stylesheet" href="black-box/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="black-box/angular.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+
+<div>
+  <h1>Genie Workshop</h1>
+  <div>
+    A step-by-step repository to illustrate how to use genie and its related components.
+  </div>
+  <hr />
+  <div>
+    <div>
+      Current Branch: <a ng-href="{{demo.repo + demo.branch}}"><strong>{{demo.branch}}</strong></a> - {{demo.concept}}
+    </div>
+    <div>
+      Next Branch: <a ng-href="{{demo.repo + demo.nextBranch}}"><strong>{{demo.nextBranch}}</strong></a> - {{demo.nextConcept}}
+      ( git checkout -f {{demo.nextBranch}} )
+    </div>
+  </div>
+  <div>
+    <hr />
+    <h2>{{demo.concept}} Explination</h2>
+    <ng-include src="'black-box/concept.html'"></ng-include>
+  </div>
+</div>
+<hr />
+
+<!-- Insert genie mark-up here -->
+
+
+
+<!-- End genie mark-up here -->
+
+<hr />
+<div>
+  <div><strong>Related Links</strong></div>
+  <div ng-repeat="link in demo.links">
+    <a ng-href="{{link.href}}" target="_blank">{{link.text}}</a>
+  </div>
+</div>
+
+<div ux-lamp rub-class="visible"></div>
+
+<script src="black-box/genie.js"></script>
+<script src="black-box/uxGenie.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
