@@ -13,39 +13,45 @@
 <div>A lesson-by-lesson tutorial to illustrate how to use genie and its related components.</div>
 <small class="text-muted"><strong>Note:</strong> This workshop is based on genie version 0.3.0.</small>
 
-<div>
-  <h2>{{lesson.concept}}</h2>
-  <span ng-if="previousLesson">
-    <a class="cursor-pointer" ng-click="changeLesson(lessonNum - 1)"><i class="glyphicon glyphicon-arrow-left"></i> {{previousLesson.concept}}</a>
-  </span>
-  <span ng-if="previousLesson && nextLesson">
-    |
-  </span>
-  <span ng-if="nextLesson">
-    <a class="cursor-pointer" ng-click="changeLesson(lessonNum + 1)">{{nextLesson.concept}} <i class="glyphicon glyphicon-arrow-right"></i></a>
-  </span>
-</div>
+<div ng-if="lesson">
 
-<hr />
+  <div>
+    <h2>{{lesson.concept}}</h2>
+    <span ng-if="previousLesson">
+      <a ng-href="{{'#/' + (lessonNum - 1)}}"><i class="glyphicon glyphicon-arrow-left"></i> {{previousLesson.concept}}</a>
+    </span>
+    <span ng-if="previousLesson && nextLesson">
+      |
+    </span>
+    <span ng-if="nextLesson">
+      <a ng-href="{{'#/' + (lessonNum + 1)}}">{{nextLesson.concept}} <i class="glyphicon glyphicon-arrow-right"></i></a>
+    </span>
+  </div>
 
-<h2>Concept Explanation</h2>
-<div ng-include="lessonDir + 'concept.html'"></div>
-
-<hr />
-
-<h2>Play around!</h2>
-<div>Feel free to edit this code and click re-run!
-  <small class="text-muted">This code has already been run once :-)</small>
-</div>
-<div class="genie-code" code-mirror></div>
-<button class="btn btn-default run-code-button" ng-click="rerunGenieCode()">Re-run code</button>
-
-<div ng-if="!nextLesson">
   <hr />
-  <h2>All done!</h2>
-  Congratulations!
-</div>
 
+  <h2>Concept Explanation</h2>
+  <div ng-include="lessonDir + 'concept.html'"></div>
+
+  <hr />
+
+  <h2>Play around!</h2>
+  <div>Feel free to edit this code and click re-run!
+    <small class="text-muted">This code has already been run once :-)</small>
+  </div>
+  <div class="genie-code" code-mirror></div>
+  <button class="btn btn-default run-code-button" ng-click="rerunGenieCode()">Re-run code</button>
+
+  <div ng-if="!nextLesson">
+    <hr />
+    <h2>All done!</h2>
+    Congratulations!
+  </div>
+
+</div>
+<div>
+  <a  ng-href="#/0">Let's get started</a>
+</div>
 <hr />
 
 <div>

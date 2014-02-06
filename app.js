@@ -76,7 +76,6 @@
       GW.loadScript($scope.lessonDir + 'genie-code.js');
     }
 
-    initScope();
 
     $scope.rerunGenieCode = function() {
       genie.reset();
@@ -94,10 +93,13 @@
       $window.eval(genieCodeMirror.getValue());
     }
 
-    $scope.changeLesson = function(lesson) {
-      $location.path('' + lesson);
-      initScope();
-    };
+    $scope.$watch(function() {
+      return $location.path();
+    }, function(path) {
+      if (path.length > 1) {
+        initScope();
+      }
+    });
 
   });
 
