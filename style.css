@@ -8,6 +8,9 @@ pre {
   word-wrap: normal;
 }
 
+.ng-cloak {
+  visibility: hidden;
+}
 
 /* Insert genie lamp css */
 
