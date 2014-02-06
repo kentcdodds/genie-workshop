@@ -10,19 +10,11 @@
 
   app.controller('MainCtrl', function($scope, GW, $window, $http, $location) {
     $scope.lessons = [
-      {
-        concept: 'Initial Setup'
-      },
-      {
-        concept: 'Wish Registration'
-      },
-      {
-        concept: 'Making a Wish',
-        lineNumber: -1
-      },
-      {
-        concept: 'Get Matching Wishes'
-      }
+      { concept: 'Initial Setup' },
+      { concept: 'Wish Registration' },
+      { concept: 'Making a Wish', lineNumber: -1 },
+      { concept: 'Get Matching Wishes' },
+      { concept: 'Genie Context' }
     ];
 
     $scope.repo = 'https://github.com/kentcdodds/genie-workshop/tree/';
