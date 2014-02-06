@@ -3,57 +3,65 @@
 <head>
   <title>Genie-Workshop</title>
   <link rel="stylesheet" href="black-box/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="black-box/codemirror/codemirror.css">
   <link rel="stylesheet" href="style.css">
   <script src="black-box/angular.js"></script>
 </head>
 <body ng-controller="MainCtrl">
 
-<div class="ng-cloak">
-  <h1>Genie Workshop</h1>
-  <div>
-    A step-by-step repository to illustrate how to use genie and its related components.
-  </div>
-  <hr />
-  <div>
-    <div>
-      Current Branch ({{demo.concept}}): <a ng-href="{{demo.repo + demo.branch}}"><strong>{{demo.branch}}</strong></a>
-    </div>
-    <div>
-      Next Branch ({{demo.nextConcept}}): <a ng-href="{{demo.repo + demo.nextBranch}}"><strong>{{demo.nextBranch}}</strong></a>
-      ( git checkout -f {{demo.nextBranch}} )
-    </div>
-  </div>
+<h1>Genie Workshop</h1>
+<div>A lesson-by-lesson tutorial to illustrate how to use genie and its related components.</div>
+<small class="text-muted"><strong>Note:</strong> This workshop is based on genie version 0.3.0.</small>
+
+<div>
+  <h2>{{lesson.concept}}</h2>
+  <span ng-if="previousLesson">
+    <a class="cursor-pointer" ng-click="changeLesson(lessonNum - 1)"><i class="glyphicon glyphicon-arrow-left"></i> {{previousLesson.concept}}</a>
+  </span>
+  <span ng-if="previousLesson && nextLesson">
+    |
+  </span>
+  <span ng-if="nextLesson">
+    <a class="cursor-pointer" ng-click="changeLesson(lessonNum + 1)">{{nextLesson.concept}} <i class="glyphicon glyphicon-arrow-right"></i></a>
+  </span>
 </div>
 
 <hr />
 
-<h2>1. {{demo.concept}} Explination</h2>
-<div ng-include="'concept.html'"></div>
+<h2>Concept Explanation</h2>
+<div ng-include="lessonDir + 'concept.html'"></div>
 
 <hr />
 
-<h2>2. {{demo.concept}} genie-code.js</h2>
-<pre class="pre-scrollable" ng-include="'genie-code.js'"></pre>
+<h2>Play around!</h2>
+<div>Feel free to edit this code and click re-run!
+  <small class="text-muted">This code has already been run once :-)</small>
+</div>
+<div class="genie-code" code-mirror></div>
+<button class="btn btn-default run-code-button" ng-click="rerunGenieCode()">Re-run code</button>
 
-<hr />
-
-<h2>3. Test it out</h2>
-<div ng-include="'test.html'"></div>
+<div ng-if="!nextLesson">
+  <hr />
+  <h2>All done!</h2>
+  Congratulations!
+</div>
 
 <hr />
 
 <div>
   <div><strong>Related Links</strong></div>
-  <div ng-repeat="link in demo.links">
+  <div ng-repeat="link in links">
     <a ng-href="{{link.href}}" target="_blank">{{link.text}}</a>
   </div>
 </div>
 
 <div ux-lamp rub-class="visible"></div>
 
+<script src="black-box/codemirror/codemirror.js"></script>
+<script src="black-box/codemirror/javascript.js"></script>
+<script src="black-box/GW.js"></script>
 <script src="black-box/genie.js"></script>
 <script src="black-box/uxGenie.js"></script>
 <script src="app.js"></script>
-<script src="genie-code.js"></script>
 </body>
 </html>

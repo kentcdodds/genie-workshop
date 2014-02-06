@@ -1,0 +1,13 @@
+<div>
+  Genie can give you a list of intelligently organized wishes which are in context for a given <code>magicWord</code>
+  based on a priority calculated by a <a href="https://github.com/kentcdodds/genie#about-matching-priority">sorting algorithm</a>:
+  <ol>
+    <li>In order of most recently executed (makeWish) with the given magic word</li>
+    <li>If the given magic word is equal to any magic words of a wish</li>
+    <li>If the given magic word is the start to any magic word of a wish (i.e. 'he' in 'hello');</li>
+    <li>If the given magic word is the start to any word in a magic word (i.e. 'wo' in 'hello world');</li>
+    <li>If the given magic word is contained in any magic words of a wish</li>
+    <li>If the given magic word is an acronym of any magic words of a wish</li>
+    <li>If the given magic word matches the order of characters in any magic words of a wish.</li>
+  </ol>
+</div>

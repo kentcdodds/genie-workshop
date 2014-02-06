@@ -12,6 +12,20 @@ pre {
   visibility: hidden;
 }
 
+.genie-code {
+  border: black solid 1px;
+  border-right: none;
+  border-left: none;
+}
+
+.run-code-button {
+  margin-top: 10px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
 /* Insert genie lamp css */
 
 .genie-lamp-container {
