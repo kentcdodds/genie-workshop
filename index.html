@@ -23,23 +23,18 @@
       ( git checkout -f {{demo.nextBranch}} )
     </div>
   </div>
-  <div>
-    <hr />
-    <h2>{{demo.concept}} Explination</h2>
-    <ng-include src="'black-box/concept.html'"></ng-include>
-  </div>
 </div>
 <hr />
 
-<h2>{{demo.concept}} Genie Stuff</h2>
-
-<!-- Insert genie mark-up here -->
-
 <div>
-  Nothing here yet. Move on to the next concept.
+  <h2>{{demo.concept}} Explination</h2>
+  <ng-include src="'black-box/concept.html'"></ng-include>
 </div>
 
-<!-- End genie mark-up here -->
+<hr />
+
+<h2>{{demo.concept}} Genie Code</h2>
+<pre class="pre-scrollable" ng-include src="'genie-code.js'"></pre>
 
 <hr />
 <div>
@@ -54,5 +49,6 @@
 <script src="black-box/genie.js"></script>
 <script src="black-box/uxGenie.js"></script>
 <script src="app.js"></script>
+<script src="genie-code.js"></script>
 </body>
 </html>

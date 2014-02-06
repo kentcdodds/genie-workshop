@@ -2,9 +2,7 @@
   // Ignore all this angular stuff. This is just for demo purposes
   var app = angular.module('gw', ['uxGenie']);
 
-  app.constant('genie', genie);
-
-  app.controller('MainCtrl', function($scope, genie) {
+  app.controller('MainCtrl', function($scope) {
 
     var autodoc = 'http://kent.doddsfamily.us/genie/autodoc/';
     $scope.demo = {
@@ -37,10 +35,5 @@
         }
       ]
     };
-
-    // Insert genie JavaScript here!
-
-
-    // End genie JavaScript here!
   });
 })();
