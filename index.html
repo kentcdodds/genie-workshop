@@ -16,27 +16,32 @@
   <hr />
   <div>
     <div>
-      Current Branch: <a ng-href="{{demo.repo + demo.branch}}"><strong>{{demo.branch}}</strong></a> - {{demo.concept}}
+      Current Branch ({{demo.concept}}): <a ng-href="{{demo.repo + demo.branch}}"><strong>{{demo.branch}}</strong></a>
     </div>
     <div>
-      Next Branch: <a ng-href="{{demo.repo + demo.nextBranch}}"><strong>{{demo.nextBranch}}</strong></a> - {{demo.nextConcept}}
+      Next Branch ({{demo.nextConcept}}): <a ng-href="{{demo.repo + demo.nextBranch}}"><strong>{{demo.nextBranch}}</strong></a>
       ( git checkout -f {{demo.nextBranch}} )
     </div>
   </div>
 </div>
-<hr />
-
-<div>
-  <h2>{{demo.concept}} Explination</h2>
-  <ng-include src="'black-box/concept.html'"></ng-include>
-</div>
 
 <hr />
 
-<h2>{{demo.concept}} Genie Code</h2>
-<pre class="pre-scrollable" ng-include src="'genie-code.js'"></pre>
+<h2>1. {{demo.concept}} Explination</h2>
+<div ng-include="'concept.html'"></div>
 
 <hr />
+
+<h2>2. {{demo.concept}} genie-code.js</h2>
+<pre class="pre-scrollable" ng-include="'genie-code.js'"></pre>
+
+<hr />
+
+<h2>3. Test it out</h2>
+<div ng-include="'test.html'"></div>
+
+<hr />
+
 <div>
   <div><strong>Related Links</strong></div>
   <div ng-repeat="link in demo.links">
