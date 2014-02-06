@@ -21,8 +21,7 @@
         lineNumber: -1
       },
       {
-        concept: 'Get Matching Wishes',
-        lineNumber: -1
+        concept: 'Get Matching Wishes'
       }
     ];
 

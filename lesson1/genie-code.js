@@ -15,3 +15,7 @@ var vacuumWish = genie({
     alert('Can NOT wait to get that dust out of that carpet!');
   }
 });
+
+console.log('trashWish = ', JSON.stringify(trashWish, null, 2));
+console.log('');
+console.log('vacuumWish = ', JSON.stringify(vacuumWish, null, 2));
