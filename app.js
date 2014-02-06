@@ -6,8 +6,10 @@
 
   app.controller('MainCtrl', function($scope, genie) {
 
+    var autodoc = 'http://kent.doddsfamily.us/genie/autodoc/';
     $scope.demo = {
       repo: 'https://github.com/kentcdodds/genie-workshop/tree/',
+      docs: autodoc,
       branch: 'master',
       concept: 'Initial Setup',
       nextBranch: 'register',
@@ -28,6 +30,10 @@
         {
           text: 'UX-Genie Repo',
           href: 'http://github.com/kentcdodds/ux-genie'
+        },
+        {
+          text: 'Genie Documentation',
+          href: autodoc
         }
       ]
     };
