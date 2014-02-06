@@ -1,21 +1,16 @@
+// Lesson 3 - Get matching wishes
 // Register simple wish
 var trashWish = genie({
   magicWords: 'Take out the trash',
-  action: printInfo
+  action: function() {}
 });
 
 // Multiple magic words
 var vacuumWish = genie({
   magicWords: ['Get dust out of the carpet', 'vacuum'],
-  action: printInfo
+  action: function() {}
 });
 
-function printInfo(wish, magicWord) {
-  var made = wish.data.timesMade;
-  console.log('I am the wish with the magic words: ' + wish.magicWords);
-  console.log('I have already been made with the following words a total of ' + made.total + ' times:');
-  for (var word in made.magicWords) {
-    console.log(word + ': ' + made.magicWords[word]);
-  }
-  console.log('Genie will now add ' + magicWord + ' to the words associated for me\n');
+function getAndPrint(magicWord) {
+
 }

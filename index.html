@@ -39,8 +39,14 @@
   <div>Feel free to edit this code and click re-run!
     <small class="text-muted">This code has already been run once :-)</small>
   </div>
-  <div class="genie-code" code-mirror></div>
-  <button class="btn btn-default run-code-button" ng-click="rerunGenieCode()">Re-run code</button>
+  <small class="text-muted">
+    At any time, you can rub the lamp (<kbd>ctrl</kbd> + <kbd>space</kbd>) and see the wishes that have been registerd.
+  </small>
+  <pre class="genie-code margin-top-small margin-right-xxxlarge" code-mirror></pre>
+  <button class="btn btn-default margin-top-small" ng-click="rerunGenieCode()">Re-run code</button>
+
+  <h4 class="margin-top-medium">Output:</h4>
+  <pre id="output" class="pre-scrollable margin-top-small margin-right-xxxlarge"></pre>
 
   <div ng-if="!nextLesson">
     <hr />
@@ -49,7 +55,7 @@
   </div>
 
 </div>
-<div>
+<div ng-hide="lesson">
   <a  ng-href="#/0">Let's get started</a>
 </div>
 <hr />
@@ -65,7 +71,7 @@
 
 <script src="black-box/codemirror/codemirror.js"></script>
 <script src="black-box/codemirror/javascript.js"></script>
-<script src="black-box/GW.js"></script>
+<script src="black-box/other.js"></script>
 <script src="black-box/genie.js"></script>
 <script src="black-box/uxGenie.js"></script>
 <script src="app.js"></script>

@@ -1,3 +1,5 @@
+// Lesson 1 - Wish Registration
+
 // Register simple wish
 var trashWish = genie({
   magicWords: 'Take out the trash',

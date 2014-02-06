@@ -1,6 +1,4 @@
-/*
- * Setup code... Skip below for making wishes code
- */
+// Lesson 2 - Making a Wish
 // Register simple wish
 var trashWish = genie({
   magicWords: 'Take out the trash',

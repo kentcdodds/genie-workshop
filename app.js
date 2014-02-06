@@ -4,6 +4,8 @@
 
   app.constant('GW', GW);
   app.constant('CodeMirror', CodeMirror);
+
+  // Yeah... I know this whole file is hacky, but this isn't important to the demo.
   var genieCodeMirror = null;
 
   app.controller('MainCtrl', function($scope, GW, $window, $http, $location) {
@@ -15,10 +17,12 @@
         concept: 'Wish Registration'
       },
       {
-        concept: 'Making a Wish'
+        concept: 'Making a Wish',
+        lineNumber: -1
       },
       {
-        concept: 'Get Matching Wishes'
+        concept: 'Get Matching Wishes',
+        lineNumber: -1
       }
     ];
 
@@ -48,9 +52,7 @@
     ];
 
     function initScope() {
-      if (console.clear) {
-        console.clear();
-      }
+      console.clear();
       $scope.lessonNum = parseInt($location.path().substring(1));
       $scope.lessonDir = 'lesson' + $scope.lessonNum + '/';
       $scope.lesson = $scope.lessons[$scope.lessonNum];
@@ -67,6 +69,10 @@
 
       $http.get($scope.lessonDir + 'genie-code.js').success(function(js) {
         genieCodeMirror.setValue(js);
+        var lineNum = $scope.lesson.lineNumber === -1 ? genieCodeMirror.lineCount() : $scope.lesson.lineNumber;
+        if ($scope.lesson.lineNumber) {
+          genieCodeMirror.setCursor(lineNum);
+        }
       });
 
       genie.reset();
@@ -79,6 +85,7 @@
 
     $scope.rerunGenieCode = function() {
       genie.reset();
+      console.clear();
       if ($scope.lesson.setupGenie) {
         GW.loadScript($scope.lessonDir + 'setup-genie.js', function() {
           runCodeMirrorCode();

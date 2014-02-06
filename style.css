@@ -11,15 +11,20 @@ pre {
 .ng-cloak {
   visibility: hidden;
 }
-
 .genie-code {
-  border: black solid 1px;
-  border-right: none;
-  border-left: none;
+  padding: 0;
 }
 
-.run-code-button {
+.margin-top-small {
   margin-top: 10px;
+}
+
+.margin-top-medium {
+  margin-top: 20px;
+}
+
+.margin-right-xxxlarge {
+  margin-right: 200px;
 }
 
 .cursor-pointer {
