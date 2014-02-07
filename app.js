@@ -1,6 +1,6 @@
 (function() {
   // Ignore all this angular stuff. This is just for demo purposes
-  var app = angular.module('gw', ['uxGenie']);
+  var app = angular.module('gw', ['ga', 'uxGenie']);
 
   app.constant('GW', GW);
   app.constant('CodeMirror', CodeMirror);
@@ -114,6 +114,16 @@
         initScope();
       }
     });
+
+    $scope.wishesMade = 0;
+    $scope.wishMade = function(wish, magicWord) {
+        $scope.wishesMade++;
+        ga('send', 'event', 'wish', 'made', JSON.stringify({
+          totalWishesMade: $scope.wishesMade,
+          wishMagicWords: wish.magicWords,
+          magicWord: magicWord
+        }));
+      }
 
   });
 
