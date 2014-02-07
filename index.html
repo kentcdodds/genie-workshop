@@ -36,17 +36,26 @@
   <hr />
 
   <h2>Play around!</h2>
-  <div>Feel free to edit this code and click re-run!
-    <small class="text-muted">This code has already been run once :-)</small>
-  </div>
-  <small class="text-muted">
-    At any time, you can rub the lamp (<kbd>ctrl</kbd> + <kbd>space</kbd>) and see the wishes that have been registerd.
-  </small>
-  <pre class="genie-code margin-top-small margin-right-xxxlarge" code-mirror></pre>
-  <button class="btn btn-primary margin-top-small" ng-click="rerunGenieCode()"><i class="glyphicon glyphicon-refresh"></i> Re-run code</button>
+  <div ng-hide="lesson.noScript">
+    <div ng-hide="lesson.readOnly">
+      Feel free to edit this code and click re-run!
+      <small class="text-muted">This code has already been run once :-)</small>
+    </div>
+    <div ng-show="lesson.readOnly">
+      This one is in read only mode. Unfortunately, this code is loaded in angular land and I can't run it as easy as the other stuff.
+    </div>
+    <small class="text-muted">
+      At any time, you can rub the lamp (<kbd>ctrl</kbd> + <kbd>space</kbd>) and see the wishes that have been registered.
+    </small>
+    <pre class="genie-code margin-top-small margin-right-xxxlarge" code-mirror></pre>
+    <button class="btn btn-primary margin-top-small" ng-click="rerunGenieCode()" ng-disabled="lesson.readOnly"><i class="glyphicon glyphicon-refresh"></i> Re-run code</button>
 
-  <h4 class="margin-top-medium">Output:</h4>
-  <pre id="output" class="pre-scrollable margin-top-small margin-right-xxxlarge"></pre>
+    <h4 class="margin-top-medium">Output:</h4>
+    <pre id="output" class="pre-scrollable margin-top-small margin-right-xxxlarge"></pre>
+  </div>
+  <div ng-show="lesson.noScript">
+    There's nothing to play with for this one. Move on!
+  </div>
 
   <div ng-if="!nextLesson">
     <hr />
@@ -67,7 +76,7 @@
   </div>
 </div>
 
-<div ux-lamp rub-class="visible"></div>
+<div ux-lamp rub-class="visible" local-storage="true"></div>
 
 <script src="black-box/codemirror/codemirror.js"></script>
 <script src="black-box/codemirror/javascript.js"></script>

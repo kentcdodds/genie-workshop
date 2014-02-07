@@ -14,7 +14,16 @@
       { concept: 'Wish Registration' },
       { concept: 'Making a Wish', lineNumber: -1 },
       { concept: 'Get Matching Wishes' },
-      { concept: 'Genie Context' }
+      { concept: 'Special Wish Actions' },
+      { concept: 'Enabling and Disabling' },
+      { concept: 'Genie Context' },
+      { concept: 'Path Context' },
+      { concept: 'UX-Genie', noScript: true },
+      { concept: 'ux-lamp Simple', noScript: true },
+      { concept: 'ux-lamp Icons' },
+      { concept: 'ux-lamp Sub Context' },
+      { concept: 'ux-lamp Advanced', noScript: true },
+      { concept: 'genie-wish', noScript: true }
     ];
 
     $scope.repo = 'https://github.com/kentcdodds/genie-workshop/tree/';
@@ -45,8 +54,8 @@
     function initScope() {
       console.clear();
       $scope.lessonNum = parseInt($location.path().substring(1));
-      $scope.lessonDir = 'lesson' + $scope.lessonNum + '/';
       $scope.lesson = $scope.lessons[$scope.lessonNum];
+      $scope.lessonDir = 'lessons/' + $scope.lesson.concept.replace(/ /g, '-').toLowerCase() + '/';
       if ($scope.lessons.length > $scope.lessonNum + 1) {
         $scope.nextLesson = $scope.lessons[$scope.lessonNum + 1];
       } else {
@@ -58,19 +67,26 @@
         $scope.previousLesson = null;
       }
 
-      $http.get($scope.lessonDir + 'genie-code.js').success(function(js) {
-        genieCodeMirror.setValue(js);
-        var lineNum = $scope.lesson.lineNumber === -1 ? genieCodeMirror.lineCount() : $scope.lesson.lineNumber;
-        if ($scope.lesson.lineNumber) {
-          genieCodeMirror.setCursor(lineNum);
-        }
-      });
+      if (!$scope.lesson.noScript) {
+        $http.get($scope.lessonDir + 'genie-code.js').success(function(js) {
+          genieCodeMirror.setValue(js);
+          var lineNum = $scope.lesson.lineNumber === -1 ? genieCodeMirror.lineCount() : $scope.lesson.lineNumber;
+          if ($scope.lesson.lineNumber) {
+            genieCodeMirror.setCursor(lineNum);
+          }
+          if ($scope.lesson.readOnly) {
+            genieCodeMirror.setOption('readOnly', true);
+          }
+        });
+      }
 
       genie.reset();
       if ($scope.lesson.setupGenie) {
         GW.loadScript($scope.lessonDir + 'setup-genie.js');
       }
-      GW.loadScript($scope.lessonDir + 'genie-code.js');
+      if (!$scope.lesson.noScript) {
+        GW.loadScript($scope.lessonDir + 'genie-code.js');
+      }
     }
 
 

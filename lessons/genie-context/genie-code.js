@@ -1,4 +1,4 @@
-// Lesson 4 - Context
+// Context
 function register(magicWords, context) {
   return genie({
     context: context,

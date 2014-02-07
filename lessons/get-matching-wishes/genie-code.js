@@ -1,4 +1,4 @@
-// Lesson 3 - Get matching wishes
+// Get Matching Wishes
 function register(magicWords, type) {
   // Note: you can put whatever you want in data.
   return genie({

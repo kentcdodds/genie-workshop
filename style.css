@@ -76,14 +76,24 @@ pre {
 }
 
 .lamp-wish {
-  padding: 0px 12px 0px 12px;
+  padding: 0 12px 0 12px;
   line-height: 50px;
+  position: relative;
 }
 
 .lamp-wish.focused {
   -mos-border-radius: 8px;
   border-radius: 8px;
   background-color: #DDD;
+}
+
+.wish-icon.has-img + .wish-display-text {
+  margin-left: 42px;
+}
+
+.wish-img-icon {
+  position: absolute;
+  margin-top: 8px;
 }
 
 .wish-img-icon, .wish-i-icon {
