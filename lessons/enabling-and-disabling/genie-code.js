@@ -7,17 +7,12 @@ genie({
 
 function printState(notice) {
   console.log('  Genie is ' + (genie.enabled() ? 'enabled' : 'disabled'));
-  var rod = genie.returnOnDisabled();
-  var rodState = rod ? 'enabled' : 'disabled';
-  if (typeof rod !== 'boolean') {
-    rodState = 'unknown!';
-  }
-  console.log('  Return on disabled is ' + rodState);
+  console.log('  Return on disabled is ' + (genie.returnOnDisabled() ? 'enabled' : 'disabled'));
   var wishes = genie.getMatchingWishes();
   var numberOfWishes = 0;
   var oneWish = false;
   if (wishes) {
-    var oneWish = wishes.length === 1;
+    oneWish = wishes.length === 1;
     numberOfWishes = wishes.length;
   } else {
     numberOfWishes = 'unknown';

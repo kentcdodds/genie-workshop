@@ -2,13 +2,15 @@
   // Ignore all this angular stuff. This is just for demo purposes
   var app = angular.module('gw', ['ga', 'uxGenie']);
 
+  app.constant('genie', genie);
   app.constant('GW', GW);
   app.constant('CodeMirror', CodeMirror);
 
   // Yeah... I know this whole file is hacky, but this isn't important to the demo.
   var genieCodeMirror = null;
 
-  app.controller('MainCtrl', function($scope, GW, $window, $http, $location) {
+  app.controller('MainCtrl', function($scope, genie, GW, $window, $http, $location, ga) {
+    $scope.genie = genie;
     $scope.lessons = [
       { concept: 'Initial Setup' },
       { concept: 'Wish Registration' },
@@ -31,7 +33,7 @@
     $scope.links = [
       {
         text: 'Genie-Workshop Slides',
-        href: 'http://slid.es/kentdodds/genie'
+        href: 'http://slid.es/kentcdodds/genie'
       },
       {
         text: 'Genie-Workshop Repo',
@@ -81,11 +83,10 @@
       }
 
       genie.reset();
-      if ($scope.lesson.setupGenie) {
-        GW.loadScript($scope.lessonDir + 'setup-genie.js');
-      }
       if (!$scope.lesson.noScript) {
-        GW.loadScript($scope.lessonDir + 'genie-code.js');
+        GW.loadScript($scope.lessonDir + 'genie-code.js', function() {
+          $scope.$apply();
+        });
       }
     }
 
@@ -93,13 +94,7 @@
     $scope.rerunGenieCode = function() {
       genie.reset();
       console.clear();
-      if ($scope.lesson.setupGenie) {
-        GW.loadScript($scope.lessonDir + 'setup-genie.js', function() {
-          runCodeMirrorCode();
-        });
-      } else {
-        runCodeMirrorCode();
-      }
+      runCodeMirrorCode();
     };
 
     function runCodeMirrorCode() {
@@ -115,11 +110,11 @@
       }
     });
 
-    $scope.wishesMade = 0;
+    var totalWishesMade = 0;
     $scope.wishMade = function(wish, magicWord) {
-        $scope.wishesMade++;
+        totalWishesMade++;
         ga('send', 'event', 'wish', 'made', JSON.stringify({
-          totalWishesMade: $scope.wishesMade,
+          totalWishesMade: totalWishesMade,
           wishMagicWords: wish.magicWords,
           magicWord: magicWord
         }));

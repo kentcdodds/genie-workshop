@@ -12,7 +12,7 @@ function setAndPrint(newContext) {
   var matchingWishes = genie.getMatchingWishes();
   console.log('Wishes in context: ' + genie.context());
   for (var i = 0; i < matchingWishes.length; i++) {
-    console.log('  ' + (i + 1) + '. ' + matchingWishes[i].magicWords[0]);
+    console.log('  ' + (i + 1) + '. ' + matchingWishes[i].magicWords[0] + ' - ' + matchingWishes[i].context.any.join(', '));
   }
   console.log();
 }

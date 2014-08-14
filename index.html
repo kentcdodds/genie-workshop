@@ -10,8 +10,8 @@
 <body ng-controller="MainCtrl">
 
 <h1>Genie Workshop</h1>
-<div>A lesson-by-lesson tutorial to illustrate how to use genie and its related components.</div>
-<small class="text-muted"><strong>Note:</strong> This workshop is based on genie version 0.3.0.</small>
+<div>A lesson-by-lesson tutorial to illustrate how to use <a href="http://github.com/kentcdodds/genie">genie</a> and its related components.</div>
+<small class="text-muted"><strong>Note:</strong> This workshop is based on genie version 0.4.0.</small>
 
 <div ng-show="lesson">
 
@@ -42,16 +42,19 @@
       <small class="text-muted">This code has already been run once :-)</small>
     </div>
     <div ng-show="lesson.readOnly">
-      This one is in read only mode. Unfortunately, this code is loaded in angular land and I can't run it as easy as the other stuff.
+      This one is in read only mode. Sorry...
     </div>
     <small class="text-muted">
-      At any time, you can rub the lamp (<kbd>ctrl</kbd> + <kbd>space</kbd>) and see the wishes that have been registered.
+      At any time, you can rub the lamp (<kbd>ctrl</kbd> + <kbd>space</kbd>) and interact with the wishes that have been registered.
     </small>
     <pre class="genie-code margin-top-small margin-right-xxxlarge" code-mirror></pre>
     <button class="btn btn-primary margin-top-small" ng-click="rerunGenieCode()" ng-disabled="lesson.readOnly"><i class="glyphicon glyphicon-refresh"></i> Re-run code</button>
 
     <h4 class="margin-top-medium">Output:</h4>
     <pre id="output" class="pre-scrollable margin-top-small margin-right-xxxlarge"></pre>
+
+    <h4 class="margin-top-medium">Genie's Options:</h4>
+    <pre id="genie-options" class="pre-scrollable margin-top-small margin-right-xxxlarge">{{genie.options() | json}}</pre>
   </div>
   <div ng-show="lesson.noScript">
     There's nothing to play with for this one. Move on!
@@ -94,6 +97,7 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-42764912-1', 'doddsfamily.us');
+  ga('require', 'displayfeatures');
   ga('send', 'pageview');
 
 </script>
